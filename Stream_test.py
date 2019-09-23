@@ -14,6 +14,12 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 
+# ----------------------------------------------------------------------------------------------------------------------
+# api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True, compression=True)
+# wait_on_rate_limit_notify=True : the api will automatically or not wait for rate limits to replenish
+# wait_on_rate_limit_notify=True : the api will print or not notification when rate limits replenish
+# ----------------------------------------------------------------------------------------------------------------------
+
 # Print own timeline
 # public_tweets = api.home_timeline()
 # for tweet in public_tweets:
@@ -39,5 +45,6 @@ myStream.filter(track=['CNP Assurances, Axa, Credit Agricole, Generali, BNP Pari
                        Groupama, HEYME, Hiscox, Homebrella, Interassurances, La Banque Postale, La Medicale, La Rurale,\
                        Le Finistere Assurance, Le Finistère Assurance, Lovys, Luko, MACSF, MAE, MALJ, Matmut, MAPA, \
                        Monceau Assurances, Mutuaide, Mutuelle de Poitiers Assurances, Opteven, Otherwise, Protech BTP, \
-                       SelfAssurance, SMA SA, Sogessur, Thélem Assurances, Verspieren, Zenith Assurance'], \
-                languages=['fr']) # the comma will cause the programto search any of those terms. for searching all the terms, use spaces only
+                       SelfAssurance, SMA SA, Sogessur, Thélem Assurances, Verspieren, Zenith Assurance'],
+                languages=[
+                    'fr'])  # the comma will cause the programto search any of those terms. for searching all the terms, use spaces only
