@@ -1,4 +1,5 @@
 import tweepy
+import csv
 
 # my user credential in order to access TWITTER API
 consumer_key = "mFBcbp8mZkZlEVAFcarY0JQEv"
@@ -20,16 +21,26 @@ api = tweepy.API(auth)
 # wait_on_rate_limit_notify=True : the api will print or not notification when rate limits replenish
 # ----------------------------------------------------------------------------------------------------------------------
 
+# ----------------------------------------------------------------------------------------------------------------------
 # Print own timeline
 # public_tweets = api.home_timeline()
 # for tweet in public_tweets:
-#  print(tweet.text)
+# print(tweet.text)
+# ----------------------------------------------------------------------------------------------------------------------
 
 # Override method in StreamListener
 class MyStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         print(status.user.screen_name, status.text, status.created_at, status.retweet_count)
+        # Write tweet
+        with open('/Users/tanguy/PycharmProjects/Pepites/csv/results_stream.csv', "a") as csvFile:
+            csvWriter = csv.writer(csvFile)
+            csvWriter.writerow([status.user.screen_name, status.text, status.created_at, status.retweet_count])
 
+# Writing csv titles
+with open('/Users/tanguy/PycharmProjects/Pepites/csv/results_stream.csv', "w") as csvFile:
+    csvWriter = csv.writer(csvFile)
+    csvWriter.writerow(['User Name', 'Text', 'Date', 'RT Count'])
 
 # Creating a Stream
 myStreamListener = MyStreamListener()
@@ -47,4 +58,4 @@ myStream.filter(track=['CNP Assurances, Axa, Credit Agricole, Generali, BNP Pari
                        Monceau Assurances, Mutuaide, Mutuelle de Poitiers Assurances, Opteven, Otherwise, Protech BTP, \
                        SelfAssurance, SMA SA, Sogessur, Thélem Assurances, Verspieren, Zenith Assurance'],
                 languages=[
-                    'fr'])  # the comma will cause the programto search any of those terms. for searching all the terms, use spaces only
+                    'fr'])  # the comma will cause the program  to search any of those terms. for searching all the terms, use spaces only
