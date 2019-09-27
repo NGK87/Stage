@@ -37,8 +37,9 @@ class MyStreamListener(tweepy.StreamListener):
             csvWriter = csv.writer(csvFile)
             csvWriter.writerow([status.user.screen_name, status.text, status.created_at, status.retweet_count])
 
+
 # Writing csv titles
-with open('/Users/tanguy/PycharmProjects/Pepites/csv/results_stream.csv', "w") as csvFile:
+with open('/Users/tanguy/PycharmProjects/Pepites/csv/results_stream.csv', "a") as csvFile:
     csvWriter = csv.writer(csvFile)
     csvWriter.writerow(['User Name', 'Text', 'Date', 'RT Count'])
 
