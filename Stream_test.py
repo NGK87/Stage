@@ -5,10 +5,10 @@ from textblob_fr import PatternTagger, PatternAnalyzer
 import re
 
 # my user credential in order to access TWITTER API
-consumer_key = "mFBcbp8mZkZlEVAFcarY0JQEv"
-consumer_secret = "hhuzxiV1EZQOc4sY9e5qhzFOxHauC8s5ydaxQER2NLqwwhtcGm"
-access_token = "624059394-D881rOiRH0xTpkrP2SxOZor09jOiV6m1NFtYSMZM"
-access_token_secret = "moT59pM1dNi0GxRuUNXR9O1tddU0Wd2uCTYT4T9wYtvu3"
+consumer_key = "CONSUMER_KEY"
+consumer_secret = "CONSUMER_SECRET"
+access_token = "ACCESS_TOKEN"
+access_token_secret = "ACCESS_TOKEN_SECRET"
 
 # Authentication
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -99,14 +99,14 @@ class MyStreamListener(tweepy.StreamListener):
         #     csvWriter2.writerow([status.user.screen_name, keywords_result(), status.created_at, status.retweet_count,
         #                         status.source, polarity, subjectivity, num(polarity)])
 
-    # ----------------------------------------------------------------------------------------------------------------------
-    # Sentiment Analysis
-    # sentiment = TextBlob(status.text)  # add .sentiment?
-    # polarity = sentiment.polarity
-    # subjectivity = sentiment.subjectivity
-    # The polarity score is a float within the range [-1.0, 1.0]
-    # The subjectivity is a float within the range [0.0, 1.0] where 0.0 is very objective and 1.0 is very subjective
-    # ----------------------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
+# Sentiment Analysis
+# sentiment = TextBlob(status.text)  # add .sentiment?
+# polarity = sentiment.polarity
+# subjectivity = sentiment.subjectivity
+# The polarity score is a float within the range [-1.0, 1.0]
+# The subjectivity is a float within the range [0.0, 1.0] where 0.0 is very objective and 1.0 is very subjective
+# ----------------------------------------------------------------------------------------------------------------------
 
     # Writing csv titles
     with open('/Users/tanguy/PycharmProjects/Pepites/csv/results_stream.csv', "a") as csvFile:
